@@ -1,0 +1,21 @@
+Retrieval-Augmented Generation (RAG)
+
+Retrieval-Augmented Generation (RAG) is an AI technique that combines information retrieval with text generation. It enhances the capabilities of large language models by allowing them to access external knowledge sources during the generation process.
+
+RAG works in two main phases:
+1. Retrieval Phase - The system searches through a knowledge base to find relevant documents or passages
+2. Generation Phase - The retrieved information is used as context for the language model to generate accurate responses
+
+Benefits of RAG include:
+- Access to up-to-date information
+- Reduced hallucination in AI responses
+- Better domain-specific knowledge
+- Improved accuracy for factual questions
+
+Common RAG implementations use vector databases like FAISS, Pinecone, or Weaviate to store and search through document embeddings. The process typically involves:
+- Document chunking and embedding
+- Vector similarity search
+- Context injection into prompts
+- Response generation with retrieved context
+
+RAG is particularly useful for question-answering systems, chatbots, and applications requiring factual accuracy.

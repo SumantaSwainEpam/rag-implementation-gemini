@@ -1,0 +1,17 @@
+Artificial Intelligence and Machine Learning
+
+Artificial Intelligence (AI) is a branch of computer science that aims to create intelligent machines capable of performing tasks that typically require human intelligence. Machine Learning (ML) is a subset of AI that focuses on algorithms and statistical models that enable computers to improve their performance on a specific task through experience.
+
+Key concepts in AI include:
+- Natural Language Processing (NLP)
+- Computer Vision
+- Robotics
+- Expert Systems
+- Neural Networks
+
+Machine Learning algorithms can be categorized into:
+1. Supervised Learning - learning with labeled training data
+2. Unsupervised Learning - finding patterns in data without labels
+3. Reinforcement Learning - learning through interaction with an environment
+
+Popular ML frameworks include TensorFlow, PyTorch, and Scikit-learn. These tools have made AI more accessible to developers and researchers worldwide.

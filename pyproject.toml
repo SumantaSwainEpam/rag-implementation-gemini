@@ -1,0 +1,22 @@
+[project]
+name = "rag-implementation-gemini"
+version = "0.1.0"
+description = "A simple RAG (Retrieval-Augmented Generation) demo using Gemini API and uv"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-genai>=0.3.0",
+    "faiss-cpu>=1.8.0",
+    "numpy>=1.26.0",
+    "python-dotenv>=1.0.1"
+]
+authors = [
+    {name = "Sumanta Swain", email = "sumanta_swain@epam.com"}
+]
+
+[tool.uv]
+# uv automatically manages your environment & lock file
+dev-dependencies = ["pytest"]
+
+[project.scripts]
+rag-gemini = "main:main"
