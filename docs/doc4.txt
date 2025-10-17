@@ -93,3 +93,21 @@ Integration with Other Libraries:
 - **XGBoost/LightGBM**: Advanced gradient boosting libraries
 
 Scikit-learn's consistent API design, comprehensive documentation, and extensive community support make it the go-to choice for machine learning in Python, from educational projects to production systems.
+
+
+Scikit-learn and RAG
+
+Although RAG typically relies on dense embeddings from modern LLM ecosystems, scikit-learn remains useful around the workflow:
+
+- Classical Baselines: TF-IDF + cosine similarity as a quick baseline retriever.
+- Dimensionality Reduction: PCA for exploratory analysis of embedding spaces.
+- Clustering: Group related chunks to guide chunking strategy or build topic overviews.
+- Evaluation: Use classification/regression metrics when framing relevance or quality prediction tasks.
+
+Simple Baseline Idea
+
+1. Create TF-IDF vectors for document chunks (TfidfVectorizer).
+2. Retrieve top-k by cosine similarity.
+3. Compare against dense embedding retrieval (FAISS) to sanity-check gains.
+
+This baseline helps validate that dense embeddings and FAISS improve retrieval quality over sparse methods.

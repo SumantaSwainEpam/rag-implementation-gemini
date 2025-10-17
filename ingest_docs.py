@@ -31,18 +31,17 @@ def read_documents(path):
     return docs
 
 def embed_texts(texts):
-    # call gemini embeddings endpoint as per docs
-    # genai client returns embeddings in result.embeddings
+    # Call Gemini embeddings endpoint and normalize output to list of float vectors
     resp = client.models.embed_content(model=EMBED_MODEL, contents=texts)
-    # extract the actual embedding values from ContentEmbedding objects
-    embeddings = []
-    for embedding in resp.embeddings:
-        if hasattr(embedding, 'values'):
-            embeddings.append(embedding.values)
+    vectors = []
+    for emb in resp.embeddings:
+        # SDKs often return ContentEmbedding with `.values`; fallback to iterable
+        if hasattr(emb, "values"):
+            vec = np.array(emb.values, dtype="float32")
         else:
-            # fallback if structure is different
-            embeddings.append(list(embedding))
-    return np.array(embeddings).astype("float32")
+            vec = np.array(list(emb), dtype="float32")
+        vectors.append(vec)
+    return np.vstack(vectors)
 
 def build_faiss_index(embs):
     dim = embs.shape[1]

@@ -6,9 +6,10 @@ from dotenv import load_dotenv
 from google import genai
 
 load_dotenv()
-API_KEY = os.environ.get("GEMINI_API_KEY")
+# Support both GOOGLE_API_KEY and GEMINI_API_KEY for convenience
+API_KEY = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY")
 if not API_KEY:
-    raise SystemExit("Set GEMINI_API_KEY in .env or environment")
+    raise SystemExit("Set GOOGLE_API_KEY or GEMINI_API_KEY in .env or environment")
 
 client = genai.Client(api_key=API_KEY)
 EMBED_MODEL = "gemini-embedding-001"
@@ -31,7 +32,7 @@ def embed_query(q):
 
 def load_index():
     if not os.path.exists(INDEX_FILE) or not os.path.exists(META_FILE):
-        raise SystemExit("Run ingest.py first to build index.")
+        raise SystemExit("Run ingest_docs.py first to build index.")
     index = faiss.read_index(INDEX_FILE)
     with open(META_FILE, "rb") as f:
         docs = pickle.load(f)

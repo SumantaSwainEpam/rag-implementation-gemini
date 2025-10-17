@@ -19,3 +19,25 @@ Common RAG implementations use vector databases like FAISS, Pinecone, or Weaviat
 - Response generation with retrieved context
 
 RAG is particularly useful for question-answering systems, chatbots, and applications requiring factual accuracy.
+
+
+Practical RAG Implementation Notes
+
+- Chunking Strategy: Split long documents into overlapping passages (e.g., 300–800 tokens, 10–15% overlap) to improve retrieval granularity.
+- Embedding Consistency: Use the same embedding model for both documents and queries (e.g., "gemini-embedding-001").
+- Similarity Metric: Normalize vectors and use inner product to approximate cosine similarity in FAISS.
+- Prompt Construction: Keep prompts concise; include retrieved snippets with clear separators and source labels for citation.
+- Index Maintenance: Rebuild or incrementally update the index when the underlying documents change.
+
+Common Pitfalls
+
+- Overly Large Chunks: May dilute relevance and hurt retrieval quality.
+- Missing Normalization: Can degrade cosine similarity performance when using inner product.
+- No Source Control: Answers may appear ungrounded if prompts omit file names or spans.
+- Over-Retrieval: Too many contexts can confuse the generator; tune k (e.g., 3–5).
+
+Evaluation Hints
+
+- Track retrieval metrics (recall@k) and manually inspect top results.
+- Assess faithfulness: verify that generated answers do not contradict the retrieved context.
+- Monitor latency and cost; cache embeddings and reuse indices where possible.

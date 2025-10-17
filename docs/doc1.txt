@@ -15,3 +15,33 @@ Machine Learning algorithms can be categorized into:
 3. Reinforcement Learning - learning through interaction with an environment
 
 Popular ML frameworks include TensorFlow, PyTorch, and Scikit-learn. These tools have made AI more accessible to developers and researchers worldwide.
+
+
+Retrieval-Augmented Generation (RAG)
+
+RAG combines an external knowledge retrieval step with a generative model. At a high level:
+- Documents are converted into vector embeddings using an embedding model.
+- A vector index (e.g., FAISS) is used to retrieve the most relevant passages for a given question.
+- The retrieved passages are provided as context to a generative model (such as Gemini) to produce grounded, referenceable answers.
+
+Embeddings and Similarity Search
+
+Embeddings map text into high-dimensional numeric vectors such that semantically similar texts are close together in vector space. Common similarities include cosine similarity (implemented via normalized inner product). Libraries like FAISS enable efficient nearest-neighbor search over large collections of embeddings.
+
+Gemini Models in RAG
+
+- Embedding Model (e.g., "gemini-embedding-001"): creates dense vectors for documents and queries.
+- Generation Model (e.g., "gemini-2.5-flash"): synthesizes answers using retrieved context to improve factuality and provide citations.
+
+Good Practices
+
+- Chunk long documents into smaller passages (e.g., 300–800 tokens) for better retrieval granularity.
+- Normalize vectors when using inner product to approximate cosine similarity.
+- Keep prompts concise and include clear instructions to cite sources.
+- Periodically re-index when documents change.
+
+Evaluation Considerations
+
+- Retrieval quality: measure recall@k and inspect top results for relevance.
+- Answer quality: assess factuality, faithfulness to sources, and helpfulness.
+- Latency: balance embedding/model sizes with responsiveness and cost.

@@ -51,3 +51,24 @@ Best Practices:
 - Test thoroughly with various input scenarios
 
 LangChain has become essential for developers building production-ready LLM applications, providing the infrastructure needed to create sophisticated AI systems that can reason, plan, and interact with the world.
+
+
+LangChain and RAG in Practice
+
+While a lightweight RAG stack can be implemented directly with embeddings + FAISS + an LLM, LangChain provides higher-level components:
+
+- Document Loaders + Text Splitters: Standardize chunking and metadata handling.
+- Embeddings + Vector Stores: Unified interfaces for FAISS, Pinecone, Weaviate, etc.
+- Retrievers + Chains: Compose retrieval and generation with reusable prompts.
+- Evaluation Utilities: Tools to score retrieval (recall@k) and judge answer faithfulness.
+
+Trade-offs
+
+- Minimal Custom Stack: Fewer dependencies, full control, easy to debug for small projects.
+- LangChain-Based: Faster prototyping, richer ecosystem, easier swapping of providers and stores.
+
+Practical Tips
+
+- Start with a minimal RAG prototype; adopt LangChain components as complexity grows.
+- Keep chunking, embedding model choice, and k consistent between both approaches.
+- Ensure prompts include clear citations regardless of framework.
