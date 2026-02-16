@@ -158,6 +158,8 @@ rag-implementation-gemini/
 │   ├── doc1.txt            # Sample AI/ML content
 │   ├── doc2.txt            # Sample RAG content
 │   └── document.pdf        # PDF documents supported
+├── assets/                  # Images and other assets
+│   └── web-ui-screenshot.png # Web UI screenshot for documentation
 ├── main.py                 # Main CLI application entry point
 ├── streamlit_app.py        # Streamlit web UI (recommended)
 ├── ingest_docs.py          # Document ingestion, chunking, and embedding
@@ -318,13 +320,36 @@ with a generative model to produce grounded, up-to-date responses.
 
 ### Web UI Output
 
-The Streamlit interface provides:
-- **Visual Document Cards**: Expandable cards showing retrieved documents with scores
-- **Chunk Information**: Clear indication of which chunk was retrieved from multi-chunk documents
-- **Real-time Processing**: Live status updates during query processing
-- **Formatted Answers**: Clean, readable answer display with source citations
+The Streamlit interface provides a modern, intuitive web-based experience for interacting with your RAG system:
 
-Depending on your documents and question, the file paths, scores, chunk numbers, and answer text will change, but the overall structure of the output will remain similar.
+![Web UI Screenshot](assets/web-ui-screenshot.png)
+
+**Key Features Visible in the Screenshot:**
+
+- **Left Sidebar**:
+  - **Configuration Panel**: Shows index status with a green checkmark when index is found
+  - **Model Information**: Displays the embedding model (`gemini-embedding-001`) and generation model (`gemini-2.5-flash`)
+  - **Document Directory**: Shows the `docs/` folder with counts of text files (4) and PDF files (1)
+  - **Reload Index Button**: Allows you to refresh the index without restarting
+
+- **Main Content Area**:
+  - **Query Interface**: Clean input field for entering questions (example: "What is Embedding in llm")
+  - **Top K Results Selector**: Adjustable slider to control how many documents to retrieve (default: 3)
+  - **Retrieved Documents Section**: 
+    - Shows document names with similarity scores (e.g., `doc1.txt` with score 0.6816)
+    - Displays multiple chunks from the same document when relevant (e.g., `tut09_llm.pdf` appears twice with scores 0.6781 and 0.6776)
+    - Expandable cards allow viewing full document content
+  - **Generated Answer**: 
+    - Clean, formatted answer display
+    - Includes source citations (e.g., "Source: docs\\doc1.txt")
+    - Provides context-aware responses based on retrieved documents
+
+**Navigation Tabs**:
+- **Query Documents**: Main interface for asking questions (shown in screenshot)
+- **Ingest Documents**: Process and index new documents
+- **About**: Project information and documentation
+
+The interface demonstrates the complete RAG workflow: entering a question, viewing retrieved documents with similarity scores, and receiving a generated answer with proper source attribution.
 
 ## 🔍 Troubleshooting
 
