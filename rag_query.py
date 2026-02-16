@@ -73,12 +73,19 @@ def main():
         if idx < 0 or idx >= len(docs): 
             continue
         meta = docs[idx]
-        retrieved_texts.append(f"FILE: {meta['path']}\n{meta['text'][:1000]}")  # limited preview
+        chunk_info = ""
+        if 'chunk_index' in meta and 'total_chunks' in meta:
+            chunk_info = f" [Chunk {meta['chunk_index'] + 1}/{meta['total_chunks']}]"
+        retrieved_texts.append(f"FILE: {meta['path']}{chunk_info}\n{meta['text'][:1000]}")  # limited preview
 
     print("\nRetrieved top documents (score, path):")
     for s, i in zip(scores, ids):
         if i >= 0 and i < len(docs):
-            print(f"{s:.4f}  {docs[i]['path']}")
+            meta = docs[i]
+            chunk_info = ""
+            if 'chunk_index' in meta and 'total_chunks' in meta:
+                chunk_info = f" [Chunk {meta['chunk_index'] + 1}/{meta['total_chunks']}]"
+            print(f"{s:.4f}  {docs[i]['path']}{chunk_info}")
 
     print("\nGenerating answer using Gemini...")
     answer = generate_answer(question, retrieved_texts)
