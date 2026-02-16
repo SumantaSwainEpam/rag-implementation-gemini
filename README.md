@@ -164,6 +164,35 @@ Try these questions with the included sample documents:
 - "What are the benefits of RAG?"
 - "What frameworks are mentioned for machine learning?"
 
+## 📤 Sample Output
+
+After running `main.py` and selecting option 2 (**Ask a question**), the console output will look similar to this:
+
+```text
+=== RAG with Gemini ===
+1. Ingest documents
+2. Ask a question
+0. Exit
+
+Enter your choice: 2
+Enter your question: What is Retrieval-Augmented Generation (RAG)?
+
+Retrieved top documents (score, path):
+0.8421  docs/doc2.txt
+0.8013  docs/doc1.txt
+
+Generating answer using Gemini...
+
+=== Answer ===
+
+RAG (Retrieval-Augmented Generation) is a technique that combines retrieval of relevant documents
+with a generative model to produce grounded, up-to-date responses.
+
+[FILE: docs/doc2.txt]
+```
+
+Depending on your documents and question, the file paths, scores, and answer text will change, but the overall structure of the output will remain similar.
+
 ## 🔍 Troubleshooting
 
 ### Common Issues
